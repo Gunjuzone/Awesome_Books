@@ -15,13 +15,21 @@ const saveBook = (list) => {
   booksList.push(list);
 }
 
+const clearfields = () => {
+  titleInput.value = '';
+  authorInput.value = '';
+}
+
 formBooks.addEventListener('submit', (e) =>{
   e.preventDefault();
   const titleValue = titleInput.value;
   const authorValue = authorInput.value;
   const list = books(titleValue, authorValue)
   saveBook(list);
+  clearfields();
 })
+
+
 
 console.log (booksList);
 
