@@ -30,11 +30,7 @@ form.addEventListener('submit', (e) => {
     value.remove();
   });
 });
-// bookList.addEventListener('click', (e) => {
-//   const value = e.target.parentElement;
-//   console.log(value);
-//   value.remove();
-// });
+//
 // function deleteButton(remove, index) {}
 // const firstBook = new awesomeBook('The Stranger', 'Albert Camus');
 // const secondBook = new awesomeBook('Myth of Sisyphus', 'Albert Camus');
