@@ -27,9 +27,14 @@ formBooks.addEventListener('submit', (e) => {
   const list = books(titleValue, authorValue);
   saveBook(list);
   clearfields();
+  booksList.forEach((book) => {
+    console.log(book);
+    displayBook(book, bookSection);
+    // saveBook(list);
+  });
 });
 
-console.log(booksList);
+// console.log(booksList);
 
 // Add Book Dynamically
 
@@ -45,12 +50,9 @@ const createBookElement = (book) => {
 };
 const displayBook = (book, bookSection) => {
   const newBookElement = createBookElement(book);
+  console.log(newBookElement);
   bookSection.appendChild(newBookElement);
 };
-
-booksList.forEach((book) => {
-  displayBook(book, bookSection);
-});
 
 // const bookContainer = document.createElement('div');
 // bookContainer.innerHTML = `
