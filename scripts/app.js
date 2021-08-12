@@ -1,106 +1,69 @@
-const titleInput = document.querySelector('.title-input');
+const addButton = document.querySelector('.add-btn');
+const booksList = document.querySelector('.book-ul')
 const authorInput = document.querySelector('.author-input');
-const addBtn = document.querySelector('.add-btn');
-const formBooks = document.querySelector('#form');
-const bookSection = document.querySelector('.book-ul');
+const titleInput = document.querySelector('.title-input');
 
-const books = (title, author) => ({
-  title,
-  author,
-});
-
-const booksList = [];
-
-const saveBook = (list) => {
-  booksList.push(list);
+const books = [];
+let retrievedBooks;
+if (localStorage.getItem('books') === null) {
+  retrievedBooks = localStorage.setItem('books', JSON.stringify(books));
+} else {
+  retrievedBooks = JSON.parse(localStorage.getItem('books'));
+}
+const displayBooks = () => {
+  retrievedBooks = JSON.parse(localStorage.getItem('books'));
+  retrievedBooks.forEach((book) => {
+    const div = document.createElement('div');
+    div.classList.add('book');
+    div.innerHTML = `
+    <h5>${book.title}</h5>  
+    <p>${book.author}</p>  
+    <button class="remove">remove</button>
+    <hr>
+  `;
+    booksList.appendChild(div);
+  });
 };
 
-const render = () => {
-  booksList.forEach(book => {
-    const div = document.createElement('div');
-    div.className += 'border';
-    const textHtml = `
-      <p class="book-title">Title: ${book.title}</p>
-      <p class="book-author">Author: ${book.author}</p>
-      `
-    const position = 'beforeend';
-    bookSection.insertAdjacentHTML(position, textHtml)
-    bookSection.appendChild(div);
-  }); 
-}
-
-const clearfields = () => {
+const addBook = (e) => {
+  retrievedBooks = JSON.parse(localStorage.getItem('books'));
+  e.preventDefault();
+  const title = titleInput.value;
+  const author = authorInput.value;
+  const book = {
+    title,
+    author,
+  };
+  book.id = Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+  retrievedBooks.push(book);
+  localStorage.setItem('books', JSON.stringify(retrievedBooks));
   titleInput.value = '';
   authorInput.value = '';
+  const div = document.createElement('div');
+  div.classList.add('book');
+  div.dataset.id = book.id;
+  div.innerHTML = `
+    <h5>${book.title}</h5>  
+    <p>${book.author}</p>  
+    <button class="remove">remove</button>
+    <hr>
+  `;
+  booksList.appendChild(div);
 };
-
-formBooks.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const titleValue = titleInput.value;
-  const authorValue = authorInput.value;
-  const list = books(titleValue, authorValue);
-  saveBook(list);
-  render();
-  clearfields();
+const removeBook = (elem) => {
+  if (elem.classList.contains('remove')) {
+    elem.parentElement.remove();
+  }
+};
+document.addEventListener('DOMContentLoaded', displayBooks);
+addButton.addEventListener('click', addBook);
+booksList.addEventListener('click', (e) => {
+  removeBook(e.target);
+  const newBooks = JSON.parse(localStorage.getItem('books'));
+  newBooks.forEach((book, index) => {
+    if (book.author === e.target.previousElementSibling.textContent) {
+      newBooks.splice(index, 1);
+    }
+  });
+  localStorage.setItem('books', JSON.stringify(newBooks));
 });
-
-console.log(booksList);
-
-
-
-
-
-
-
-
-
-// Add Book Dynamically
-
-// const createBookElement = (book) => {
-//   const bookContainer = document.createElement('div');
-//   bookContainer.innerHTML = `
-//     <p class="book-title">${book.title}</p>
-//     <p class="book-author">${book.author}</p>
-//     <button type="button" data-action="delete" data-book-id=" class="remove-btn">Remove</button>
-//     `;
-
-//   return bookContainer;
-// };
-// const displayBook = (book, bookSection) => {
-//   const newBookElement = createBookElement(book);
-//   console.log(newBookElement);
-//   bookSection.appendChild(newBookElement);
-// };
-
-// const bookContainer = document.createElement('div');
-// bookContainer.innerHTML = `
-//     <p class="book-title">${book.title}</p>
-//     <p class="book-author">${book.author}</p>
-//     <button type="button" data-action="delete" class="remove-btn" >Remove</button>
-//     `;
-
-// bookList.appendChild(bookContainer);
-
-// form.addEventListener('submit', (e) => {
-//   e.preventDefault();
-//   const titleValue = titleInput.value;
-//   const authorValue = authorInput.value;
-
-//   const bookContainer = document.createElement('div');
-//   bookContainer.innerHTML = `
-//     <p class="book-title">${titleValue}</p>
-//     <p class="book-author">${authorValue}</p>
-//     <button type="button" data-action="delete" class="remove-btn" >Remove</button>
-//     `;
-//   bookList.appendChild(bookContainer);
-//   titleInput.value = '';
-//   authorInput.value = '';
-//   const removeButton = bookContainer.querySelector('.remove-btn');
-//   removeButton.addEventListener('click', (e) => {
-//     const value = e.target.parentElement;
-//     console.log(value);
-//     value.remove();
-//   });
-// });
-//
-//
