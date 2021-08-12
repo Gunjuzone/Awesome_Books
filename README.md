@@ -21,15 +21,15 @@ To get a local copy up and running follow these simple example steps:
 
 👤 **David Leonardo Castillo R**
 
-- Github: [@githubhandle](https://github.com/Gunjuzone)
-- Twitter: [@twitterhandle](https://twitter.com/Gunjuzone)
-- Linkedin: [ LinkedIn](https://www.linkedin.com/in/shakiru-olagunju-775034161/)
-
-👤 **David Leonardo Castillo R**
-
 - Github: [@David Castillo](https://github.com/Fanger53)
 - Twitter: [@David Castillo](https://twitter.com/DavidLe97005129)
 - Linkedin: [@David Castillo](https://www.linkedin.com/in/david-castillo-61ba10b8/)
+
+👤 **Shakiru Olagunju**
+
+- Github: [@githubhandle](https://github.com/Gunjuzone)
+- Twitter: [@twitterhandle](https://twitter.com/Gunjuzone)
+- Linkedin: [ LinkedIn](https://www.linkedin.com/in/shakiru-olagunju-775034161/)
 
 
 
