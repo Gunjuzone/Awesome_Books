@@ -1,5 +1,5 @@
 const addButton = document.querySelector('.add-btn');
-const booksList = document.querySelector('.book-ul')
+const booksList = document.querySelector('.book-ul');
 const authorInput = document.querySelector('.author-input');
 const titleInput = document.querySelector('.title-input');
 
