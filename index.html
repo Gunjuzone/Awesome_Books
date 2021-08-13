@@ -5,9 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Awesome Books</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="./style/style.css">
+    <script src="luxon.js"></script>
   </head>
   <body>
+    <nav class="navbar navbar-expand-lg  bg-white border-secondary border mt-2 ">
+			<div class="container-fluid">
+				<a class="navbar-brand home" href="#">Awesome Books</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03"
+					aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+					<ul class="navbar-nav ms-auto">
+						<li class="nav-item ">
+							<a class="nav-link list-button border-end" href="#">
+								List
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link add-new border-end" href="#">
+								Addnew
+							</a>
+						</li>
+						<li class="nav-item add-contacts">
+							<a class="nav-link" href="#">
+								Contacts
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
     <div class="container  center rounded">
       <h2 class="center title">All The Books</h2>
       <table class=" border center rounded">
@@ -39,6 +70,18 @@
 
         </form>
       </div>
+      <section class="contact mx-5 mt-5 mb-5">
+        <h2 class="mb-5 text-center">Contact Information</h2>
+        <div class="center">
+          <p>Do Have any questions or want to say hello!</p>
+          <p>You can reach out to us</p>
+          <ul class=" mt-2">
+            <li>email: Contact@info.com</li>
+            <li>Phone: 25471369562224</li>
+            <li>Adress: center Raquira Boyaca</li>
+          </ul>
+        </div>
+      </section>
       </div>
     <script src="./scripts/app.js"></script>
   </body>
