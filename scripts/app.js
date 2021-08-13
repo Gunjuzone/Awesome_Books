@@ -52,7 +52,7 @@ class UI {
       <td>${book.title}</td>
       <td>${book.author}</td>
       <td>${book.nPages}</td>
-      <td><a href="#" class="btn btn-danger btn-sm delete">Delete</a></td>
+      <td><a href="#" class="btn border btn-r  delete">Delete</a></td>
     `;
 
     list.appendChild(row);
