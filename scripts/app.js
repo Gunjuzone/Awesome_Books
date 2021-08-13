@@ -7,6 +7,37 @@ class Book {
   }
 }
 
+class Store {
+  static getBooks() {
+    let books;
+    if (localStorage.getItem('books') === null) {
+      books = [];
+    } else {
+      books = JSON.parse(localStorage.getItem('books'));
+    }
+
+    return books;
+  }
+
+  static addBook(book) {
+    const books = Store.getBooks();
+    books.push(book);
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+
+  static removeBook(nPages) {
+    const books = Store.getBooks();
+
+    books.forEach((book, index) => {
+      if (book.nPages === nPages) {
+        books.splice(index, 1);
+      }
+    });
+
+    localStorage.setItem('books', JSON.stringify(books));
+  }
+}
+
 class UI {
   static displayBooks() {
     const books = Store.getBooks();
@@ -28,7 +59,7 @@ class UI {
   }
 
   static deleteBook(el) {
-    if(el.classList.contains('delete')) {
+    if (el.classList.contains('delete')) {
       el.parentElement.parentElement.remove();
     }
   }
@@ -51,37 +82,6 @@ class UI {
   }
 }
 
-class Store {
-  static getBooks() {
-    let books;
-    if(localStorage.getItem('books') === null) {
-      books = [];
-    } else {
-      books = JSON.parse(localStorage.getItem('books'));
-    }
-
-    return books;
-  }
-
-  static addBook(book) {
-    const books = Store.getBooks();
-    books.push(book);
-    localStorage.setItem('books', JSON.stringify(books));
-  }
-
-  static removeBook(nPages) {
-    const books = Store.getBooks();
-
-    books.forEach((book, index) => {
-      if(book.nPages === nPages) {
-        books.splice(index, 1);
-      }
-    });
-
-    localStorage.setItem('books', JSON.stringify(books));
-  }
-}
-
 document.addEventListener('DOMContentLoaded', UI.displayBooks);
 
 document.querySelector('#book-form').addEventListener('submit', (e) => {
@@ -90,7 +90,7 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
   const author = document.querySelector('#author').value;
   const nPages = document.querySelector('#nPages').value;
 
-  if(title === '' || author === '' || nPages === '') {
+  if (title === '' || author === '' || nPages === '') {
     UI.showAlert('Please fill in all fields', 'danger');
   } else {
     const book = new Book(title, author, nPages);
