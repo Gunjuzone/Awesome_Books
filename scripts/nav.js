@@ -9,10 +9,10 @@ const form = document.querySelector('.form-section');
 homeButton.addEventListener('click', (e) => {
   e.preventDefault();
   contact.classList.add('d-none');
+  form.classList.add('d-none');
   list.classList.remove('d-none');
-  form.classList.remove('d-none');
+  listButton.classList.add('active');
   addNewButton.classList.remove('active');
-  listButton.classList.remove('active');
   contactsButton.classList.remove('active');
 });
 
